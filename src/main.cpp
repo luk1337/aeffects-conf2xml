@@ -210,8 +210,8 @@ void writeAudioEffectsXml(const std::string &filePath, const std::vector<library
 
 	audioEffectsConfElement->InsertEndChild(postprocessEffectsElement);
 
-	// Prepare audio_effects_conf -> pre_processing node
-	auto preprocessEffectsElement = xmlDocument.NewElement("pre_processing");
+	// Prepare audio_effects_conf -> preprocess node
+	auto preprocessEffectsElement = xmlDocument.NewElement("preprocess");
 
 	for (auto &preprocessEffect : preprocessEffects)
 	{
