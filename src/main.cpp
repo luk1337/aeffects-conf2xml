@@ -163,7 +163,8 @@ void writeAudioEffectsXml(const std::string &filePath, const std::vector<library
 		librariesElement->InsertEndChild(libraryElement);
 	}
 
-	audioEffectsConfElement->InsertEndChild(librariesElement);
+	if (librariesElement->FirstChildElement() != nullptr)
+		audioEffectsConfElement->InsertEndChild(librariesElement);
 
 	// Prepare audio_effects_conf -> effects node
 	auto effectsElement = xmlDocument.NewElement("effects");
@@ -187,7 +188,8 @@ void writeAudioEffectsXml(const std::string &filePath, const std::vector<library
 		effectsElement->InsertEndChild(effectElement);
 	}
 
-	audioEffectsConfElement->InsertEndChild(effectsElement);
+	if (effectsElement->FirstChildElement() != nullptr)
+		audioEffectsConfElement->InsertEndChild(effectsElement);
 
 	// Prepare audio_effects_conf -> postprocess node
 	auto postprocessEffectsElement = xmlDocument.NewElement("postprocess");
@@ -208,7 +210,8 @@ void writeAudioEffectsXml(const std::string &filePath, const std::vector<library
 		postprocessEffectsElement->InsertEndChild(postprocessEffectElement);
 	}
 
-	audioEffectsConfElement->InsertEndChild(postprocessEffectsElement);
+	if (postprocessEffectsElement->FirstChildElement() != nullptr)
+		audioEffectsConfElement->InsertEndChild(postprocessEffectsElement);
 
 	// Prepare audio_effects_conf -> preprocess node
 	auto preprocessEffectsElement = xmlDocument.NewElement("preprocess");
@@ -229,7 +232,8 @@ void writeAudioEffectsXml(const std::string &filePath, const std::vector<library
 		preprocessEffectsElement->InsertEndChild(preprocessEffectElement);
 	}
 
-	audioEffectsConfElement->InsertEndChild(preprocessEffectsElement);
+	if (preprocessEffectsElement->FirstChildElement() != nullptr)
+		audioEffectsConfElement->InsertEndChild(preprocessEffectsElement);
 
 	// Save
 	xmlDocument.InsertEndChild(audioEffectsConfElement);
