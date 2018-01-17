@@ -1,5 +1,6 @@
 #include <cutils/config_utils.h>
 #include <cutils/misc.h>
+#include <libgen.h>
 #include <iostream>
 #include <tinyxml2.h>
 #include <vector>
@@ -44,7 +45,7 @@ void parseLibraries(cnode *root, std::vector<library_t> &libraries)
 		auto pathNode = config_find(libraryNode, "path");
 
 		if (pathNode != nullptr)
-			libraries.push_back({libraryNode->name, basename(pathNode->value)});
+			libraries.push_back({libraryNode->name, basename(const_cast<char *>(pathNode->value))});
 	}
 }
 
